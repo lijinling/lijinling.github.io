@@ -17,4 +17,49 @@
     </div>
 </div>
 <script type="text/javascript" src="app-1.0.1.js"></script></body>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">
+        var ad_units = {
+            ios : {
+                banner: 'ca-app-pub-6807585476420996/9475869035',
+                interstitial: 'ca-app-pub-6807585476420996/4841655309'
+            },
+            android : {
+                banner: 'ca-app-pub-6807585476420996/3760507920',
+                interstitial: 'ca-app-pub-6807585476420996/9639520563'
+            }
+        };
+    // 根据平台，自动选用相应的广告 ID
+    var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
+    
+    function onDeviceReady() {
+        
+        var myDate=new Date(2018,4,1,0,0,0); //month的值域为0～11，0代表1月，11表代表12月；date的值域在1～31之间；
+        console.log('myDate',myDate.getTime());
+
+        var today = new Date();
+        console.log('today',today.getTime());
+
+        
+        if ((myDate.getTime())>(today.getTime()))
+        {
+            // alert("Today is before 9th August 2008");
+        }
+        else
+        {
+             //alert("Today is after 9th August 2008");//过了myDate.setFullYear就显示广告
+            if(AdMob) AdMob.createBanner( {
+                                         adId:admobid.banner,
+                                         adSize:'SMART_BANNER',
+                                         position:AdMob.AD_POSITION.BOTTOM_CENTER,
+                                         autoShow:true} );
+                                         if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:true} );
+        }
+        
+    }
+    
+    document.addEventListener('deviceready',onDeviceReady, false);
+        </script>
+
 </html>
