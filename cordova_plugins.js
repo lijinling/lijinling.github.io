@@ -2,7 +2,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
     "id": "cordova-plugin-inappbrowser.inappbrowser",
-    "file": "inappbrowser.js",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
     "pluginId": "cordova-plugin-inappbrowser",
     "clobbers": [
       "cordova.InAppBrowser.open",
@@ -11,7 +11,7 @@ module.exports = [
   },
   {
     "id": "cordova-plugin-admobpro.AdMob",
-    "file": "AdMob.js",
+    "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
     "pluginId": "cordova-plugin-admobpro",
     "clobbers": [
       "window.AdMob"
